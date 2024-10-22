@@ -25,13 +25,13 @@ public class Task {
     // decimal or base-10 value, returns the decimal
     public static int binToDec(String binary){
         //setting base case to only work when the string has at least one value in it
-        while(binary.length() > 0) {
+        if (binary.length() > 0) {
             //creating a length variable based off the length of the new string each time - 1
             int length = binary.length() - 1;
             //separating each value in the string into their own indexes in an array
             String[] arr = binary.split("");
             //creating a new version of binary without the first value
-            String binary2 = binary.substring(1, binary.length());
+            String binary2 = binary.substring(1);
             //setting value to equal the first element in the array and multiplying it by 2^the value of length
             //value = what the specific element equals in base-10 terms before adding the whole thing together
             int value = Integer.parseInt(arr[0]) * ((int)(Math.pow(2, length)));
@@ -40,18 +40,22 @@ public class Task {
         }
 
         //returns 0 when base case is not met anymore
-        return 0;
+        else {
+            return 0;
+        }
     }
 
     //inputs a decimal or base-10 value, converts it into a binary or base-2 value, returns the binary number
     public static String decToBin(int decimal){
         //sets base case to only work when the decimal is greater than or equal to 1
-        while (decimal >= 1){
+        if (decimal >= 1){
             //method calls on itself using the decimal divided in half
             //string copy of the remainder of the decimal when split in half added to the end
              return decToBin(decimal / 2) + Integer.toBinaryString(decimal % 2);
         }
         //returns "" when base case is no longer met
-        return "";
+        else {
+            return "";
+        }
     }
 }
